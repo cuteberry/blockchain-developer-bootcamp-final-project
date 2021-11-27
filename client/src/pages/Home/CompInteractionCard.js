@@ -79,15 +79,15 @@ const CompInteractionCard = () => {
         <Text block t2 color={colors.green} className="mb-3">
           MiddleMan
         </Text>
-        <BalanceInput balance={senderBalance} value={depositAmount} setValue={setDepositAmount} currency="eth" />
+        <BalanceInput balance={senderBalance === '--'?0:senderBalance/10000000000} value={depositAmount} setValue={setDepositAmount} currency="eth" />
         <ArrowDown color={colors.green} size={36} style={{ margin: '1rem auto' }} />
         <Button variant="outline-dark" disabled={depositAmount <= 0} className="mt-3" onClick={handleDepositSubmit}>
           Withhold {depositAmount} ETH
         </Button>
-        <Button variant="outline-dark" className="mt-3" onClick={handleRefundSubmit}>
+        <Button variant="outline-dark" disabled={depositAmount <= 0} className="mt-3" onClick={handleRefundSubmit}>
           Refund ETH
         </Button>
-        <Button variant="outline-dark" className="mt-3" onClick={handleDistributeSubmit}>
+        <Button variant="outline-dark" disabled={depositAmount <= 0} className="mt-3" onClick={handleDistributeSubmit}>
           Distribute ETH
         </Button>
       </Card>

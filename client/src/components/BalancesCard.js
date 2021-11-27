@@ -27,13 +27,13 @@ const BalanceCard = () => {
   return (
     <Card style={{ maxWidth: 300 }}>
       <Text block color={colors.green}>
-        contract balance: {contractBalance}
+        contract balance: {contractBalance === '--'?0:contractBalance/10000000000} ETH
       </Text>
       <Text block color={colors.green}>
-        sender balance: {senderBalance}
+        sender balance: {senderBalance === '--'?0:senderBalance/10000000000} ETH
       </Text>
       <Text block color={colors.green}>
-        reciever balance: {receiverBalance}
+        reciever balance: {receiverBalance === '--'?0:receiverBalance/10000000000} ETH
       </Text>
     </Card>
   );
