@@ -65,7 +65,7 @@ contract MiddleMan{
         require(enrolled[msg.sender]);
         uint value = records[msg.sender][receiver];
         if (value >= 0 && balance >= value) {
-            (bool sent,) = msg.sender.call.value(value)("");
+            (bool sent,) = receiver.call.value(value)("");
             require(sent, "Failed to distribute");
             records[msg.sender][receiver] = 0;
             balance -= value;
@@ -82,11 +82,23 @@ contract MiddleMan{
         require(enrolled[msg.sender]);
         return records[msg.sender][receiver];
     }
+    function getOwnerBalance() public view returns(uint ownerBalance)
+    {
+        ownerBalance = owner.balance;
+    }
+
+    function balanceOf(address addr) public view returns(uint accountBalance)
+    {
+        accountBalance = addr.balance;
+    }
 
     constructor() public {
         // Set the owner to the transaction sender
         //owner = payable(msg.sender);
         //owner = msg.sender;
     }
-
+    
+    // This contract keeps all Ether sent to it with no way
+    // to get it back.
+    function () external payable {}  
 }

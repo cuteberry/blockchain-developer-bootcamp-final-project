@@ -1,5 +1,9 @@
 {
+  "name": "blockchain-developer-bootcamp-final-project-ml",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "dependencies": {
-    "@truffle/hdwallet-provider": "^1.7.0"
+    "@truffle/hdwallet-provider": "^1.7.0",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }
