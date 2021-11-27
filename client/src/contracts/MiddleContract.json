@@ -28,22 +28,22 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Mei Lazell\",\"kind\":\"dev\",\"methods\":{},\"title\":\"A smart contract interface to get contract balance and owner\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/MiddleContract.sol\":\"MiddleContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/MiddleContract.sol\":{\"keccak256\":\"0x511ef55dd0227fde19ea4b44440e575591f80b339367b9ec477dc1adff9f3a49\",\"urls\":[\"bzz-raw://9adda70baed6082f8d3ae700e37e7207e9edfdc4246a75cfb117ced9c4d88090\",\"dweb:/ipfs/QmUPVUypqZKkvtzW4nkrbKo9dCzU7Lyjx7ARVuNur6b7j8\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Mei Lazell\",\"kind\":\"dev\",\"methods\":{\"getContractBalance()\":{\"returns\":{\"_0\":\"uint The balance of the contract\"}},\"getOwner()\":{\"returns\":{\"_0\":\"address the address of the owner for ContractRegister\"}}},\"title\":\"A smart contract interface to get contract balance and owner\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getContractBalance()\":{\"notice\":\"Get the balance of the MiddleMan contract\"},\"getOwner()\":{\"notice\":\"Get the owner of the smart contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/MiddleContract.sol\":\"MiddleContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/MiddleContract.sol\":{\"keccak256\":\"0x5710bc6d26f036c00c5515f2d56b0530a667fb5efd746b1cdf69450d09e0b1f5\",\"urls\":[\"bzz-raw://648ffb64fe9c0207a97a9a1f5eda7828d8cf1c507d75520299c651f2df70ea4e\",\"dweb:/ipfs/QmfZxgm3MQRS6QfWC2mnFBgoGwkZ5Bzioq7BZ3WTuLPBTj\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity >=0.5 <0.9;\n\n\n/// @title A smart contract interface to get contract balance and owner\n/// @author Mei Lazell\ninterface MiddleContract {\n   function getContractBalance() external view returns (uint);\n   function getOwner() external view returns (address);\n}",
+  "source": "pragma solidity >=0.5 <0.9;\n\n\n/// @title A smart contract interface to get contract balance and owner\n/// @author Mei Lazell\ninterface MiddleContract {\n    /// @notice Get the balance of the MiddleMan contract\n    /// @return uint The balance of the contract\n   function getContractBalance() external view returns (uint);\n    /// @notice Get the owner of the smart contract\n    /// @return address the address of the owner for ContractRegister\n   function getOwner() external view returns (address);\n}",
   "sourcePath": "/Users/mei/cryptostudy/blockchain-developer-bootcamp-final-project/contracts/MiddleContract.sol",
   "ast": {
     "absolutePath": "project:/contracts/MiddleContract.sol",
     "exportedSymbols": {
       "MiddleContract": [
-        92
+        94
       ]
     },
-    "id": 93,
+    "id": 95,
     "license": null,
     "nodeType": "SourceUnit",
     "nodes": [
@@ -71,18 +71,23 @@
           "text": "@title A smart contract interface to get contract balance and owner\n @author Mei Lazell"
         },
         "fullyImplemented": false,
-        "id": 92,
+        "id": 94,
         "linearizedBaseContracts": [
-          92
+          94
         ],
         "name": "MiddleContract",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": null,
-            "documentation": null,
+            "documentation": {
+              "id": 82,
+              "nodeType": "StructuredDocumentation",
+              "src": "156:102:1",
+              "text": "@notice Get the balance of the MiddleMan contract\n @return uint The balance of the contract"
+            },
             "functionSelector": "6f9fb98a",
-            "id": 86,
+            "id": 87,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -90,24 +95,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 82,
+              "id": 83,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "182:2:1"
+              "src": "289:2:1"
             },
             "returnParameters": {
-              "id": 85,
+              "id": 86,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 84,
+                  "id": 85,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 86,
-                  "src": "208:4:1",
+                  "scope": 87,
+                  "src": "315:4:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -115,10 +120,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 83,
+                    "id": 84,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "208:4:1",
+                    "src": "315:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -128,19 +133,24 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "207:6:1"
+              "src": "314:6:1"
             },
-            "scope": 92,
-            "src": "155:59:1",
+            "scope": 94,
+            "src": "262:59:1",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "body": null,
-            "documentation": null,
+            "documentation": {
+              "id": 88,
+              "nodeType": "StructuredDocumentation",
+              "src": "326:117:1",
+              "text": "@notice Get the owner of the smart contract\n @return address the address of the owner for ContractRegister"
+            },
             "functionSelector": "893d20e8",
-            "id": 91,
+            "id": 93,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -148,24 +158,24 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 87,
+              "id": 89,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "235:2:1"
+              "src": "464:2:1"
             },
             "returnParameters": {
-              "id": 90,
+              "id": 92,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 89,
+                  "id": 91,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 91,
-                  "src": "261:7:1",
+                  "scope": 93,
+                  "src": "490:7:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -173,10 +183,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 88,
+                    "id": 90,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "261:7:1",
+                    "src": "490:7:1",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -187,27 +197,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "260:9:1"
+              "src": "489:9:1"
             },
-            "scope": 92,
-            "src": "218:52:1",
+            "scope": 94,
+            "src": "447:52:1",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 93,
-        "src": "125:147:1"
+        "scope": 95,
+        "src": "125:376:1"
       }
     ],
-    "src": "0:272:1"
+    "src": "0:501:1"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/MiddleContract.sol",
       "exportedSymbols": {
         "MiddleContract": [
-          92
+          94
         ]
       },
       "license": null
@@ -239,10 +249,10 @@
           "contractKind": "interface",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            92
+            94
           ],
           "name": "MiddleContract",
-          "scope": 93
+          "scope": 95
         },
         "children": [
           {
@@ -256,7 +266,6 @@
           {
             "attributes": {
               "body": null,
-              "documentation": null,
               "functionSelector": "6f9fb98a",
               "implemented": false,
               "isConstructor": false,
@@ -266,7 +275,7 @@
               ],
               "name": "getContractBalance",
               "overrides": null,
-              "scope": 92,
+              "scope": 94,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -274,14 +283,22 @@
             "children": [
               {
                 "attributes": {
+                  "text": "@notice Get the balance of the MiddleMan contract\n @return uint The balance of the contract"
+                },
+                "id": 82,
+                "name": "StructuredDocumentation",
+                "src": "156:102:1"
+              },
+              {
+                "attributes": {
                   "parameters": [
                     null
                   ]
                 },
                 "children": [],
-                "id": 82,
+                "id": 83,
                 "name": "ParameterList",
-                "src": "182:2:1"
+                "src": "289:2:1"
               },
               {
                 "children": [
@@ -291,7 +308,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 86,
+                      "scope": 87,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -304,29 +321,28 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 83,
+                        "id": 84,
                         "name": "ElementaryTypeName",
-                        "src": "208:4:1"
+                        "src": "315:4:1"
                       }
                     ],
-                    "id": 84,
+                    "id": 85,
                     "name": "VariableDeclaration",
-                    "src": "208:4:1"
+                    "src": "315:4:1"
                   }
                 ],
-                "id": 85,
+                "id": 86,
                 "name": "ParameterList",
-                "src": "207:6:1"
+                "src": "314:6:1"
               }
             ],
-            "id": 86,
+            "id": 87,
             "name": "FunctionDefinition",
-            "src": "155:59:1"
+            "src": "262:59:1"
           },
           {
             "attributes": {
               "body": null,
-              "documentation": null,
               "functionSelector": "893d20e8",
               "implemented": false,
               "isConstructor": false,
@@ -336,7 +352,7 @@
               ],
               "name": "getOwner",
               "overrides": null,
-              "scope": 92,
+              "scope": 94,
               "stateMutability": "view",
               "virtual": false,
               "visibility": "external"
@@ -344,14 +360,22 @@
             "children": [
               {
                 "attributes": {
+                  "text": "@notice Get the owner of the smart contract\n @return address the address of the owner for ContractRegister"
+                },
+                "id": 88,
+                "name": "StructuredDocumentation",
+                "src": "326:117:1"
+              },
+              {
+                "attributes": {
                   "parameters": [
                     null
                   ]
                 },
                 "children": [],
-                "id": 87,
+                "id": 89,
                 "name": "ParameterList",
-                "src": "235:2:1"
+                "src": "464:2:1"
               },
               {
                 "children": [
@@ -361,7 +385,7 @@
                       "mutability": "mutable",
                       "name": "",
                       "overrides": null,
-                      "scope": 91,
+                      "scope": 93,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -375,34 +399,34 @@
                           "stateMutability": "nonpayable",
                           "type": "address"
                         },
-                        "id": 88,
+                        "id": 90,
                         "name": "ElementaryTypeName",
-                        "src": "261:7:1"
+                        "src": "490:7:1"
                       }
                     ],
-                    "id": 89,
+                    "id": 91,
                     "name": "VariableDeclaration",
-                    "src": "261:7:1"
+                    "src": "490:7:1"
                   }
                 ],
-                "id": 90,
+                "id": 92,
                 "name": "ParameterList",
-                "src": "260:9:1"
+                "src": "489:9:1"
               }
             ],
-            "id": 91,
+            "id": 93,
             "name": "FunctionDefinition",
-            "src": "218:52:1"
+            "src": "447:52:1"
           }
         ],
-        "id": 92,
+        "id": 94,
         "name": "ContractDefinition",
-        "src": "125:147:1"
+        "src": "125:376:1"
       }
     ],
-    "id": 93,
+    "id": 95,
     "name": "SourceUnit",
-    "src": "0:272:1"
+    "src": "0:501:1"
   },
   "compiler": {
     "name": "solc",
@@ -410,17 +434,35 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-27T18:28:21.478Z",
+  "updatedAt": "2021-11-27T21:54:15.597Z",
   "devdoc": {
     "author": "Mei Lazell",
     "kind": "dev",
-    "methods": {},
+    "methods": {
+      "getContractBalance()": {
+        "returns": {
+          "_0": "uint The balance of the contract"
+        }
+      },
+      "getOwner()": {
+        "returns": {
+          "_0": "address the address of the owner for ContractRegister"
+        }
+      }
+    },
     "title": "A smart contract interface to get contract balance and owner",
     "version": 1
   },
   "userdoc": {
     "kind": "user",
-    "methods": {},
+    "methods": {
+      "getContractBalance()": {
+        "notice": "Get the balance of the MiddleMan contract"
+      },
+      "getOwner()": {
+        "notice": "Get the owner of the smart contract"
+      }
+    },
     "version": 1
   }
 }

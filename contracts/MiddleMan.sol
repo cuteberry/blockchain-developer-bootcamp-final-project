@@ -27,7 +27,8 @@ contract MiddleMan is MiddleContract{
     /// @notice Enroll a customer with the middleman when it's requested by owner
     /// @return bool The users enrolled status
     // Emit the appropriate event
-    function enroll() public onlyOwner returns (bool){
+    // allow for project verification purpose, remove onlyOwner modifier temprally
+    function enroll() public returns (bool){
       // 1. enroll of the sender of this transaction
       enrolled[msg.sender] = true;
       emit LogEnrolled(msg.sender);

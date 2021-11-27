@@ -10,3 +10,6 @@ The current nature of Crypto transation has been non-revertable. It's a challeng
 2. For merchandise purchase, we can hold the fund before the buyer recieves the merchandise. This protected the seller for the risk of not getting the payment and the buyer for not recieve the goods. 
 
 3. For donation management, we can hold the fund in the contract. The distribution of fund to recievers will be managed by the contractor. 
+
+## Test
+The smart contract is deployed to ropsten network with contract address: 0x50634A4f11D4ce638ae36138A647768724fb818b
