@@ -1,56 +1,56 @@
 pragma solidity >=0.5 <0.9;
 
-contract MiddleMan{
+/// @title A middle man smart contract so that trasaction can be reverted later
+/// @author Mei Lazell
+import "./MiddleContract.sol";
+contract MiddleMan is MiddleContract{
     
-    // <owner>
-    // Let's make sure everyone knows who owns the middleman, yes, fill in the
-    // appropriate visilibility keyword
-    address public owner = msg.sender;
-
+    address private owner;
     uint private balance; 
-
-    // Add an argument for this event, an accountAddress
+    /// Add an argument for this event, an accountAddress
     event LogEnrolled(address accountAddress);
-
-    // Fill in the visibility keyword
-    // Hint: We want to create a getter function and allow contracts to be able
-    //       to see if a user is enrolled.
+    /// Fill in the visibility keyword
+    /// Hint: We want to create a getter function and allow contracts to be able
+    ///       to see if a user is enrolled.
     mapping (address => bool) public enrolled;
-
     mapping(address => mapping (address => uint)) private records ;
-    
-    // modifier enoughValue(uint value) 
-    modifier enoughValue(uint value) { 
-        require(msg.value >= value); 
+    /// @notice Get the owner of the smart contract
+    /// @return address The address of the owner for ContractRegister
+    function getOwner() external override view returns (address){
+        return owner;
+    }
+    /// @notice Ensure the funciton using this modifier can only called by the oner
+    modifier onlyOwner() {
+        require(msg.sender == owner);
         _;
     }
-
-    /// @notice Enroll a customer with the middleman
-    /// @return The users enrolled status
+    /// @notice Enroll a customer with the middleman when it's requested by owner
+    /// @return bool The users enrolled status
     // Emit the appropriate event
-    function enroll() public returns (bool){
+    function enroll() public onlyOwner returns (bool){
       // 1. enroll of the sender of this transaction
       enrolled[msg.sender] = true;
       emit LogEnrolled(msg.sender);
       return enrolled[msg.sender];
     }
-    //addr_from to request this only
-    //deposit value to contract from addr_from
-    //mark it's from addr_from and wait to be send to addr_to
-    function withhold (address addr_to) public payable {
+
+    /// @notice Withhold the value for reciever from sender when the sender is enrolled
+    /// @param receiver the address of the receiver
+    function withhold (address receiver) public payable {
         require(enrolled[msg.sender]);
-        records[msg.sender][addr_to] = msg.value;
+        records[msg.sender][receiver] = msg.value;
         balance += msg.value;
     }
 
-    //addr_from to request this only
-    //deposit value from contract to address_from for the value withheld for addr_to 
+    /// @notice Refund the value to the sender for the reciever when the sender is enrolled
+    /// @param receiver the address of the receiver
+    /// @return bool the bool value whether the refund has been successful
     function refundSender (address receiver) public returns (bool){
         require(enrolled[msg.sender]);
         uint value = records[msg.sender][receiver];
         if (value >= 0 && balance >= value) {
             //refund the value to addr_from
-            (bool sent,) = msg.sender.call.value(value)("");
+            (bool sent,) = msg.sender.call{value: value}("");
             require(sent, "Failed to refund");
             records[msg.sender][receiver] = 0;
             balance -= value;
@@ -59,13 +59,14 @@ contract MiddleMan{
         return false;
     }
 
-    //addr_from to request this only
-    //deposit value from contract to address_to if the request is from  addr_from 
+    /// @notice Distribute the value to the reciever when the sender is enrolled
+    /// @param receiver the address of the receiver
+    /// @return bool The bool value whether the distribution has been successful
     function distributeToReceiver (address payable receiver) public returns (bool){
         require(enrolled[msg.sender]);
         uint value = records[msg.sender][receiver];
         if (value >= 0 && balance >= value) {
-            (bool sent,) = receiver.call.value(value)("");
+            (bool sent,) = receiver.call{value: value}("");
             require(sent, "Failed to distribute");
             records[msg.sender][receiver] = 0;
             balance -= value;
@@ -73,32 +74,36 @@ contract MiddleMan{
         } 
         return false;
     }
-
-    function getContractBalance() public view returns (uint) {
+    /// @notice Get the balance of the MiddleMan contract
+    /// @return uint The balance of the contract
+    function getContractBalance() external override view returns (uint) {
         return address(this).balance;
     }
-
+    /// @notice Get the balance for the receiver from sender 
+    /// @param receiver the address of the reciever
+    /// @return uint The balance for the receiver from sender 
     function getBalanceForReceiver(address receiver) public view returns (uint) {
         require(enrolled[msg.sender]);
         return records[msg.sender][receiver];
     }
-    function getOwnerBalance() public view returns(uint ownerBalance)
+    /// @notice Get the balance for an address
+    /// @param addr the address of an account
+    /// @return uint The balance for the address
+    function balanceOf(address addr) public view returns(uint)
     {
-        ownerBalance = owner.balance;
-    }
-
-    function balanceOf(address addr) public view returns(uint accountBalance)
-    {
-        accountBalance = addr.balance;
+        return addr.balance;
     }
 
     constructor() public {
-        // Set the owner to the transaction sender
-        //owner = payable(msg.sender);
-        //owner = msg.sender;
+        owner = msg.sender;
     }
     
     // This contract keeps all Ether sent to it with no way
     // to get it back.
-    function () external payable {}  
+    fallback() external payable {}
+
+    receive() external payable {
+        // custom function code
+    }
+
 }

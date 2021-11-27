@@ -15,21 +15,9 @@ contract("MiddleMan", function (accounts) {
     instance = await MiddleMan.new();
   });
 
-  it("ready to be solved!", async() => {
-    const eth100 = 100e18;
-    assert.equal(await web3.eth.getBalance(alice), eth100.toString());
-  });
-
-
   it("is owned by owner", async () => {
     assert.equal(
-      // Hint:
-      //   the error `TypeError: Cannot read property 'call' of undefined`
-      //   will be fixed by setting the correct visibility specifier. See
-      //   the following two links
-      //   1: https://docs.soliditylang.org/en/v0.8.5/cheatsheet.html?highlight=visibility#function-visibility-specifiers
-      //   2: https://docs.soliditylang.org/en/v0.8.5/contracts.html#getter-functions
-      await instance.owner.call(),
+      await instance.getOwner.call(),
       contractOwner,
       "owner is not correct",
     );
@@ -58,7 +46,7 @@ contract("MiddleMan", function (accounts) {
   it("should withold correct amount for receiver from sender", async () => {
     await instance.enroll({ from: alice });
     await instance.withhold(jeff, { from: alice, value: deposit});
-    const balance = await instance.getBalanceForReceiver.call(jeff, { from: alice });
+    const balance = await instance.getBalanceForReceiver(jeff, { from: alice });
 
     assert.equal(
       deposit.toString(),
@@ -72,7 +60,7 @@ contract("MiddleMan", function (accounts) {
     await instance.withhold(jeff, { from: alice, value: deposit});
     await instance.distributeToReceiver(jeff, { from: alice});
 
-    const balance = await instance.getBalanceForReceiver.call(jeff, { from: alice });
+    const balance = await instance.getBalanceForReceiver(jeff, { from: alice });
 
     assert.equal(
       zero.toString(),
@@ -87,7 +75,7 @@ contract("MiddleMan", function (accounts) {
     await instance.withhold(jeff, { from: alice, value: deposit});
     await instance.refundSender(jeff, { from: alice});
 
-    const balance = await instance.getBalanceForReceiver.call(jeff, { from: alice });
+    const balance = await instance.getBalanceForReceiver(jeff, { from: alice });
 
     assert.equal(
       zero.toString(),
@@ -96,4 +84,3 @@ contract("MiddleMan", function (accounts) {
     );
   });
 });
-

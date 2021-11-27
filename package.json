@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "dependencies": {
+    "@openzeppelin/contracts": "^4.4.0",
     "@truffle/hdwallet-provider": "^1.7.0",
     "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "devDependencies": {
+    "@openzeppelin/hardhat-upgrades": "^1.12.0",
+    "@openzeppelin/truffle-upgrades": "^1.11.0",
+    "solc-0.6": "npm:solc@^0.6.12"
   }
 }

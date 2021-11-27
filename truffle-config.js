@@ -21,12 +21,17 @@
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
- const mnemonic = "test";
+const mnemonic = "test";
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const path = require("path");
 
 module.exports = {
+  compilers: {
+    solc: {
+      version: "0.8.0",
+    },
+  },
   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
   /**
    * Networks define how you connect to your ethereum client and let you set the
@@ -87,7 +92,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.6",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
