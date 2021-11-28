@@ -23,7 +23,7 @@ export const useMiddleMan = () => {
   const middlemanContractAddress = await registerContract.backendContract();
   const middlemanContract = useContract(middlemanContractAddress, MIDDLEMAN_ABI.abi);
   */
-  const middlemanContractAddress = '0x50634A4f11D4ce638ae36138A647768724fb818b'; // ropsten
+  const middlemanContractAddress = '0x7629ad9e277046b37C71E720bA0a715311827839'; // ropsten
   //const middlemanContractAccountAddress = '0x520A74215410c7832911bb0c7b86c6c353BBd08C'; // ropsten
   const middlemanContract = useContract(middlemanContractAddress, MIDDLEMAN_ABI.abi);
   

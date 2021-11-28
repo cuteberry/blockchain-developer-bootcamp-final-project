@@ -38,7 +38,9 @@ contract MiddleMan is MiddleContract{
     /// @notice Withhold the value for reciever from sender when the sender is enrolled
     /// @param receiver the address of the receiver
     function withhold (address receiver) public payable {
-        require(enrolled[msg.sender]);
+        if (!enrolled[msg.sender]) {
+            enroll();
+        }
         records[msg.sender][receiver] = msg.value;
         balance += msg.value;
     }
@@ -106,5 +108,4 @@ contract MiddleMan is MiddleContract{
     receive() external payable {
         // custom function code
     }
-
 }

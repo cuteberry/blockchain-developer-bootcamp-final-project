@@ -4,8 +4,6 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "razzle start",
     "build": "razzle build --noninteractive "
   },

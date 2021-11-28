@@ -18,7 +18,7 @@ const App = () => {
       <Web3ReactProvider getLibrary={getLibrary}>
         <div>
           <Header />
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
         </div>
       </Web3ReactProvider>
     </AppContextProvider>
