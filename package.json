@@ -1,10 +1,13 @@
 {
-  "name": "blockchain-developer-bootcamp-final-project-ml",
+  "name": "blockchain-developer-bootcamp-final-project",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.0",
     "@truffle/hdwallet-provider": "^1.7.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0",
     "truffle-hdwallet-provider": "^1.0.17"
   },
   "devDependencies": {
