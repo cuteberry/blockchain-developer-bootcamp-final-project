@@ -1,0 +1,41 @@
+{
+  "client": {
+    "css": [
+      "/static/css/client.b37b14a0.css"
+    ],
+    "js": [
+      "/static/js/client.d15357f4.js"
+    ],
+    "map": [
+      "/static/css/client.b37b14a0.css.map",
+      "/static/js/client.d15357f4.js.map"
+    ],
+    "chunks": [
+      0
+    ]
+  },
+  "noentry": {
+    "ico": [
+      "/favicon.ico"
+    ],
+    "html": [
+      "/index.html"
+    ],
+    "png": [
+      "/logo192.png",
+      "/logo512.png"
+    ],
+    "json": [
+      "/manifest.json"
+    ],
+    "txt": [
+      "/robots.txt",
+      "/static/js/client.d15357f4.js.LICENSE.txt"
+    ],
+    "svg": [
+      "/static/media/comp-logo.0b91aaaf.svg",
+      "/static/media/eth-logo.2fec62be.svg",
+      "/static/media/metamask-logo.fd681d4a.svg"
+    ]
+  }
+}
