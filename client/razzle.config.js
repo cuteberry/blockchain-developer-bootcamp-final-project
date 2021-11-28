@@ -2,6 +2,7 @@ module.exports = {
   options: {
     buildType: 'spa',
     enableBabelCache: false,
+    verbose: true,
   },
   modifyWebpackConfig(opts) {
     const config = opts.webpackConfig;
