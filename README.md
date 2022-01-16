@@ -38,7 +38,7 @@ BLOCKCHAIN-DEVELOPER-BOOTCAMP-FINAL-PROJECT
 
 ## Author's public ethereum account
 Mei Lazell
-0x520A74215410c7832911bb0c7b86c6c353BBd08C
+0x32A0b7fE6C354b8333EB00096C62ba32062FCcB8
 
 ## [Screen cast of final project](https://drive.google.com/file/d/116_89AJQnns5Jth5AYIigYG79U8ycLLA/view?usp=sharing)
 
