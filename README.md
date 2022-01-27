@@ -22,19 +22,41 @@ BLOCKCHAIN-DEVELOPER-BOOTCAMP-FINAL-PROJECT
 |    └── public
 |    └── src
 |           └── components
-|           └── contracts
+|           └── contracts // json file for smart contract abi
 |           └── hooks
+|               └── useMiddleMan.js // how smart contact is used by frontend code
 |           └── pages
 |           └── static
 |           └── styles
 |           └── utils
-|── contracts
+|── contracts // smart contracts source code
 |── docs
 |── migrations
 |── test
+|── truffle-config.js // smartcontract network deployment configuration 
 ```
-## Install dependencies
-`npm install`
+
+## Command 
+[Ganache-cli](https://trufflesuite.com/docs/ganache/quickstart.html)
+
+[truffle](https://trufflesuite.com/docs/truffle/quickstart.html) command
+```
+truffle develop
+truffle console
+truffle migrate
+truffle migrate —network ganache
+truffle test --debug
+truffle migrate --network develop
+truffle migrate —network ropsten
+``` 
+
+for front end
+```
+pm install --global yarn
+cd client
+yarn start
+```
+
 
 ## Author's public ethereum account
 Mei Lazell
